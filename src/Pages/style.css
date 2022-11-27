@@ -1,0 +1,10 @@
+.notfound{
+    text-align: center;
+}
+.errortext{
+    font-size: 2rem;
+    padding-top: 1rem;
+}
+.errorlink{
+    font-size: 1.4rem;
+}
