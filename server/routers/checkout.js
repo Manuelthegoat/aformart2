@@ -3,15 +3,16 @@ const router = require("express").Router();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
+const formData = require("../models/checkout.js");
 
 router.use(cors());
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
-router.use(
-  express.static(
-    path.resolve(__dirname, "../../client/src/Pages/Checkout/Checkout.jsx")
-  )
-);
+// router.use(
+//   express.static(
+//     path.resolve(__dirname, "../../client/src/Pages/Checkout/Checkout.jsx")
+//   )
+// );
 
 router.use((req, res, next) => {
   // Change CORS Origin
@@ -26,7 +27,7 @@ router.use((req, res, next) => {
 
   next();
 });
-router.post("/checkout", (req, res) => {
+router.post("/api/formdata", (req, res) => {
   if (!req.body) {
     res.sendStatus(400);
   } else {
