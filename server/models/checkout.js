@@ -1,21 +1,23 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
-const formSchema = new mongoose.Schema(
+const formSchema = new Schema(
   {
-    email: { type: String, required: true, unique: true },
+    email: { type: String },
     offer: { type: Boolean },
-    delivery: { type: Boolean, required: true },
-    fName: { type: String, required: true },
-    lName: { type: String, required: true },
-    address: { type: String, required: true },
-    city: { type: String, required: true },
-    country: { type: String, required: true },
-    state: { type: String, required: true },
-    phone: { type: Number, required: true },
+    delivery: { type: Boolean },
+    fName: { type: String },
+    lName: { type: String },
+    address: { type: String },
+    city: { type: String },
+    country: { type: String },
+    state: { type: String },
+    phone: { type: Number },
     note: { type: String },
     saveInfo: { type: Boolean },
-  },
-  { timestamps: true }
+  }
+  // { timestamps: true }
 );
 
-module.exports = mongoose.model("formData", formSchema);
+const checkoutData = mongoose.model("checkoutForm", formSchema);
+module.exports = checkoutData;

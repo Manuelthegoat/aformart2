@@ -3,18 +3,9 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-// main().catch((err) => console.log(err));
-
-// async function main() {
-//   await mongoose.connect(process.env.mongoUrl);
-// }
-
-app.use(require("./routers/checkout"));
-
-const dbo = require("./db/conn");
+const checkoutRoute = require("./routers/checkout");
+app.post("/api/checkout", checkoutRoute);
 
 app.listen(port, () => {
-  // perform a database connection when server starts
-  dbo.connectToCluster();
   console.log(`Server is running on port: ${port}`);
 });
