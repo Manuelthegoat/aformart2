@@ -15,8 +15,8 @@ const formSchema = new Schema(
     phone: { type: Number },
     note: { type: String },
     saveInfo: { type: Boolean },
-  }
-  // { timestamps: true }
+  },
+  { timestamps: true }
 );
 
 const checkoutData = mongoose.model("checkoutForm", formSchema);

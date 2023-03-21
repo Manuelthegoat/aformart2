@@ -20,7 +20,7 @@ async function main() {
 }
 
 router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.urlencoded({ extended: true }));
 
 // Enable CORS
 // const whitelist = ["http://localhost:3000"];
@@ -38,14 +38,33 @@ router.use(cors());
 
 // Get the client data on submit
 router.post("/api/checkout", async (request, response) => {
-  const user = new checkoutData(request.body);
+  let user = new checkoutData({
+    email: "qwerty@gmail.com",
+    offer: false,
+    delivery: false,
+    fName: "Sally",
+    Name: "Igwesi",
+    address: "ezebunugwi",
+    city: "Lagos",
+    country: "Nigeria",
+    state: "Enugu",
+    phone: "09154355445",
+    note: "Hello",
+    saveInfo: false,
+  });
+  console.log(user);
 
-  try {
-    await user.save();
-    response.send(user);
-  } catch (error) {
-    response.status(500).send(error);
-  }
+  // let savedUser = await user.save();
+  // response.send(savedUser);
+  // console.log(savedUser);
+
+  user.save(function (err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      response.send("Data inserted");
+    }
+  });
 });
 
 router.get("/api/checkout", async (request, response) => {
